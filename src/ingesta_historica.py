@@ -16,6 +16,9 @@ DB_URL = os.getenv("DB_URL")
 PDF_PATH = os.path.join(BASE_DIR, "data", "URBE_Informe_2013.pdf")
 MODEL_ID = "gemini-3-flash-preview"
 
+if not API_KEY or not DB_URL:
+    raise ValueError("❌ API_KEY and DB_URL must be set in .env (copy .env.example to .env and fill it in).")
+
 client = genai.Client(api_key=API_KEY)
 engine = create_engine(DB_URL)
 

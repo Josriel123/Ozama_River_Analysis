@@ -93,7 +93,8 @@ Ozama_River_Analysis/
 │   ├── package.json
 │   └── vite.config.js
 │
-└── .env                         # Environment variables (not committed)
+├── .env.example                 # Template for .env (copy it, fill in your own values)
+└── requirements.txt             # Python dependencies
 ```
 
 ---
@@ -116,7 +117,12 @@ cd Ozama_River_Analysis
 
 ### 2. Configure Environment Variables
 
-Create a `.env` file in the project root:
+Copy the template to `.env` in the project root and fill in your own values. `.env` is gitignored, so your credentials never get committed.
+
+```bash
+cp .env.example .env        # macOS/Linux
+copy .env.example .env      # Windows
+```
 
 ```env
 API_KEY=your_google_gemini_api_key
@@ -132,7 +138,7 @@ python -m venv .venv
 # source .venv/bin/activate  # macOS/Linux
 
 # Install dependencies
-pip install flask flask-cors sqlalchemy psycopg2-binary python-dotenv PyPDF2 google-genai
+pip install -r requirements.txt
 ```
 
 ### 4. Run the AI Ingestion Pipeline
